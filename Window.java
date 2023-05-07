@@ -1,37 +1,41 @@
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
+public class CreateWarriorCard {
 
-public class Window extends Application {
+    public static WarriorCard create() {
+        // Создаем компоненты для ввода информации о карточке
+        Label nameLabel = new Label("Имя:");
+        TextField nameField = new TextField();
+        Label healthLabel = new Label("Здоровье:");
+        TextField healthField = new TextField();
+        Label damageLabel = new Label("Урон:");
+        TextField damageField = new TextField();
+        Button createButton = new Button("Создать");
 
+        // Создаем контейнер для компонентов
+        VBox container = new VBox(nameLabel, nameField, healthLabel, healthField, damageLabel, damageField, createButton);
+        container.setSpacing(10);
+        container.setPadding(new Insets(10));
 
-    public static void runner(String args) {
-        Application.launch(args);
-    }
+        // Создаем окно для контейнера
+        Stage stage = new Stage();
+        stage.setScene(new Scene(container));
 
-    private Label lbl;
+        // Создаем обработчик событий для кнопки создания карточки
+        createButton.setOnAction(event -> {
+            // Получаем введенные значения из полей ввода
+            String name = nameField.getText();
+            int health = Integer.parseInt(healthField.getText());
+            int damage = Integer.parseInt(damageField.getText());
 
-    @Override
-        public void start(Stage stage) throws Exception {
-            Group group = new Group();
+            // Создаем карточку воина
+            WarriorCard card = new WarriorCard(name, health, damage);
 
-            FlowPane flowPane = new FlowPane();
-            CreateCard createCard = new CreateCard(flowPane);
-            createCard.addElements();
-
-            Scene scene = new Scene(flowPane, 400, 400);
-            stage.setScene(scene);
-            stage.setTitle("Card battle");
-            stage.show();
-
-        createCard.setCreateButtonHandler(event -> {
-            Card card = createCard.create();
-            lbl.setText(card.toString());
+            // Закрываем окно
+            stage.close();
         });
+
+        // Показываем окно для ввода информации о карточке
+        stage.showAndWait();
+
+        return card;
     }
-
 }
-

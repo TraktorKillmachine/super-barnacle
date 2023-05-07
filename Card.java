@@ -1,44 +1,15 @@
-public class Card {
-    private String name;
-    private int healtpoint;
-    private int damage;
+public class WarriorBattle {
 
-    public Card(String setName, int setHealtpoint, int setDamage) {
-        name = setName;
-        healtpoint = setHealtpoint;
-        damage = setDamage;
+    private WarriorCard warrior1;
+    private WarriorCard warrior2;
+
+    public WarriorBattle(WarriorCard warrior1, WarriorCard warrior2) {
+        this.warrior1 = warrior1;
+        this.warrior2 = warrior2;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getHealtpoint() {
-        return healtpoint;
-    }
-
-    public void setHealtpoint(int healtpoint) {
-        this.healtpoint = healtpoint;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "Название: " + name + ", " +
-                "Здоровье: " + healtpoint + ", " +
-                "Урон: " + damage +
-                "}";
-    }
-}
+    public void attack() {
+        // Воин 1 атакует воина 2
+        int damage1 = warrior1.getDamage();
+        warrior2.takeDamage(damage1);
+        System.out.println(warrior1.getName() + " атакует " + warrior2.getName()
