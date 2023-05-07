@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 public class Window extends Application {
 
+
     public static void runner(String args) {
         Application.launch(args);
     }
@@ -14,9 +15,6 @@ public class Window extends Application {
     private Label lbl;
 
     @Override
-    public void start(Stage stage) throws Exception {
-
-
         public void start(Stage stage) throws Exception {
             Group group = new Group();
 
@@ -24,11 +22,16 @@ public class Window extends Application {
             CreateCard createCard = new CreateCard(flowPane);
             createCard.addElements();
 
-            Scene scene = new Scene(createCard.getFlowPane(), 400, 400);
+            Scene scene = new Scene(flowPane, 400, 400);
             stage.setScene(scene);
             stage.setTitle("Card battle");
             stage.show();
-        }
+
+        createCard.setCreateButtonHandler(event -> {
+            Card card = createCard.create();
+            lbl.setText(card.toString());
+        });
     }
+
 }
 
