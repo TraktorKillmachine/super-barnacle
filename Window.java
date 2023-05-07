@@ -17,13 +17,18 @@ public class Window extends Application {
     public void start(Stage stage) throws Exception {
 
 
-        Group group = new Group();
-        CreateCard create = new CreateCard();
-        FlowPane flowPane = new FlowPane();
-        Scene scene = new Scene(flowPane, 400, 400);
-        stage.setScene(scene);
-        stage.setTitle("Card battle");
-        stage.show();
+        public void start(Stage stage) throws Exception {
+            Group group = new Group();
+
+            FlowPane flowPane = new FlowPane();
+            CreateCard createCard = new CreateCard(flowPane);
+            createCard.addElements();
+
+            Scene scene = new Scene(createCard.getFlowPane(), 400, 400);
+            stage.setScene(scene);
+            stage.setTitle("Card battle");
+            stage.show();
+        }
     }
 }
 

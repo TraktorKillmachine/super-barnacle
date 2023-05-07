@@ -5,6 +5,20 @@ import javafx.scene.layout.FlowPane;
 import org.w3c.dom.Text;
 
 public class CreateCard {
+
+    private FlowPane flowPane;
+
+    public CreateCard(FlowPane flowPane) {
+        this.flowPane = flowPane;
+    }
+
+    public void addElements() {
+        // ваш код добавления элементов в flowPane
+    }
+
+    public FlowPane getFlowPane() {
+        return flowPane;
+    }
     public static void create() {
         Label lbl = new Label();
         TextField nameField = new TextField();
